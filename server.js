@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 app.use(cors());
@@ -15,6 +16,8 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Jason_Rod:pEyQefCge8UuYH0l@cop4331-7exdq.mongodb.net/COP4331?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
+
+app.use(express.static(path.join(__dirname, '/client/build')))
 
 client.connect(err => {
   const collection = client.db("test").collection("devices");
@@ -48,6 +51,11 @@ app.use((req, res, next) =>
     );  
     next();
 });
+
+app.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname + '/client/build/index.html'))
+});
+
 app.listen(PORT, function() { 
   console.log(`Server listening on port ${PORT}.`);
 });
