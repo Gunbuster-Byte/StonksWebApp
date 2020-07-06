@@ -5,7 +5,7 @@ const Article = require('../models/article');
 const path = require('path');
 const app = express(); 
 
-app.use(express.static(path.join('/Users/austinwithaustism/LargeProject/StonksWebApp/StonksWebApp/', '/client/public')))
+app.use(express.static(path.join(_dirname, '/client/build')))
 
 
 router.get('/articles', function(req, res) { 
