@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import './App.css';
 
@@ -20,6 +20,7 @@ import { ThemeProvider }  from "@material-ui/styles";
 import Red                from '@material-ui/core/colors/red';
 import Blue               from '@material-ui/core/colors/blue';
 import Green              from '@material-ui/core/colors/green';
+
 
 //Main theme
 const theme = createMuiTheme({
