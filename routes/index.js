@@ -2,6 +2,14 @@ const express = require ('express');
 const router = express.Router(); 
 const Article = require('../models/article'); 
 
+const path = require('path');
+const app = express(); 
+
+app.use(express.static(path.join('/Users/austinwithaustism/LargeProject/StonksWebApp/StonksWebApp', '/client/build')))
+app.get('*', (req,res) => {
+    res.sendFile(path.join('/Users/austinwithaustism/LargeProject/StonksWebApp/StonksWebApp' + '/client/build/index.html'))
+})
+
 router.get('/articles', function(req, res) { 
   Article.find(function(err, articles) {
     res.json(articles);
