@@ -2,11 +2,6 @@ const express = require ('express');
 const router = express.Router(); 
 const Article = require('../models/article'); 
 
-const path = require('path');
-const app = express(); 
-
-app.use(express.static(path.join(__dirname, '/client/build')))
-
 
 router.get('/articles', function(req, res) { 
   Article.find(function(err, articles) {
@@ -58,7 +53,5 @@ router.delete('/articles/:id', function(req, res) {
     }
   });
 })
-app.get('*', (req,res) => {
-    res.sendFile(path.join(__dirname + '/client/build/index.html'))
-});
+
 module.exports = router; 
